@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt- BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/formnotas.css">
+    <title>Formulário de Notas</title>
+</head>
+<body>
+    <h1>Formulário de Notas</h1>
+	<form onsubmit="return false;">
+		<label for="nome">Nome:</label>
+		<input type="text" id="nome" required>
+        <br>
+		<label for="n1">Nota 1:</label>
+		<input type="number" id="n1" min="0" max="10" step="0.1" required>
+		<label for="n2">Nota 2:</label>
+		<input type="number" id="n2" min="0" max="10" step="0.1" required>
+        <br>
+		<label for="n3">Nota 3:</label>
+		<input type="number" id="n3" min="0" max="10" step="0.1" required>
+		<label for="n4">Nota 4:</label>
+		<input type="number" id="n4" min="0" max="10" step="0.1" required>
+        <br>
+		<button class="botao" onclick="calcularMedia()">Calcular Média</button>
+        <button class="botao" type="button" onClick="recarregarAPagina()">Atualizar!</button>
+	</form>
+
+	<div id="resultado"></div>
+
+	<script>
+		function calcularMedia() {
+			var n1 = parseFloat(document.getElementById("n1").value);
+			var n2 = parseFloat(document.getElementById("n2").value);
+			var n3 = parseFloat(document.getElementById("n3").value);
+			var n4 = parseFloat(document.getElementById("n4").value);
+
+			var media = (n1 + n2 + n3 + n4) / 4;
+            
+            document.getElementById("result: media").innerHTML = ("A Média do aluno é: ")+ media;
+            if(media >= 6){
+            document.getElementById("apv").innerHTML = ("APROVADO!");
+            }if(media < 2.0) {
+            document.getElementById("rpv").innerHTML = ("REPROVADO!");
+            }if(media >= 2.1 && media <= 5.9){
+            document.getElementById("rec").innerHTML = ("RECUPERAÇÃO!");
+            }
+        }
+
+        function recarregarAPagina(){
+        window.location.reload();
+        } 
+
+    </script>  
+    
+    <h1 id="result: media"></h1>
+    <h2 id="apv" class="aprovado"></h2>
+    <h2 id="rpv" class="reprovado"></h2>
+    <h2 id="rec" class="recuperacao"></h2>
+</body>
+</html>
